@@ -1,7 +1,7 @@
 import { Component, computed, DestroyRef, inject, input } from "@angular/core";
 import { UsersService } from "../users.service";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
-import { RouterLink } from "../../../../node_modules/@angular/router/index";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-user-tasks",
@@ -11,25 +11,28 @@ import { RouterLink } from "../../../../node_modules/@angular/router/index";
   imports: [RouterOutlet, RouterLink],
 })
 export class UserTasksComponent {
-  userName = input.required<string>();
+  // userName = input.required<string>();
   userId = input.required<string>();
+  usersService = inject(UsersService)
 
-  // private activatedRoute = inject(ActivatedRoute);
-  // private destroyRef = inject(DestroyRef);
+  private activatedRoute = inject(ActivatedRoute);
+  private destroyRef = inject(DestroyRef);
 
-  // userName = computed(
-  //   () => this.usersService.users.find((u) => u.id === this.userId())?.name
-  // );
+  userName = computed<string | undefined>(() =>
+    this.usersService.users.find((u) => u.id === this.userId())?.name
+  );
 
   // ngOnInit(): void {
   //   console.log(this.activatedRoute);
   //   const subscription = this.activatedRoute.paramMap.subscribe({
   //     next: (paramMap) => {
-  //       this.userName =
-  //         this.usersService.users.find((u) => u.id === paramMap.get("userId"))
-  //           ?.name || "";
+  //       // Update userId signal instead of userName directly
+  //       console.log(this.userId);
+        
+  //       // this.userId.set(paramMap.get("userId") || "");
   //     },
   //   });
   //   this.destroyRef.onDestroy(() => subscription.unsubscribe());
   // }
 }
+   
