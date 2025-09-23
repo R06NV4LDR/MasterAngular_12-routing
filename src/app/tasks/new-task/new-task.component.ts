@@ -30,7 +30,7 @@ export class NewTaskComponent {
       this.userId()
     );
     this.submitted = true;
-    this.router.navigate(["/users", this.userId, "tasks"], {
+    this.router.navigate(["/users", this.userId(), "tasks"], {
       replaceUrl: false,
     });
   }
