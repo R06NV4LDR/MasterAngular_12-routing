@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { TasksComponent } from "../tasks/tasks.component";
+import { resolveUserTasks, TasksComponent } from "../tasks/tasks.component";
 import { canLeaveEditPage, NewTaskComponent } from "../tasks/new-task/new-task.component";
 import { resolveUserName } from "./user-tasks/user-tasks.component";
 

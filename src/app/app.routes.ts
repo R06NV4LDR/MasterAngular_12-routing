@@ -13,7 +13,7 @@ import { inject } from "@angular/core";
 const dummyCanMatch: CanMatchFn = (route, segments) => {
   const router = inject(Router);
   const shouldGetAccess = Math.random();
-  if (shouldGetAccess < 1.0) {
+  if (shouldGetAccess < 1) {
     return true;
   }
   return new RedirectCommand(router.parseUrl("/unauthorized"));
@@ -45,8 +45,4 @@ export const routes: Routes = [
     path: "**",
     component: NotFoundComponent,
   },
-  //   {
-  //     path: "tasks", // <your-domain.com/tasks>
-  //     component: TasksComponent,
-  //   },
 ];
