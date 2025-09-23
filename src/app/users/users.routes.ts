@@ -7,14 +7,14 @@ export const routes: Routes = [
   {
     path: "",
     redirectTo: "tasks",
-    pathMatch: "prefix",
+    pathMatch: "full",
   },
   {
     path: "tasks", // <your-domain.com>/users/<uid>/<tasks>
     component: TasksComponent,
-    runGuardsAndResolvers: "paramsOrQueryParamsChange",
+    runGuardsAndResolvers: "always",
     resolve: {
-      userTasks: resolveUserName,
+      userTasks: resolveUserTasks,
     },
   },
   {
