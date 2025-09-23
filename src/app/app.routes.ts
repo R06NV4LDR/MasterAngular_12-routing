@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
 
+import { routes as userRoutes } from "./users/users.routes";
 import { NoTaskComponent } from "./tasks/no-task/no-task.component";
 import { UserTasksComponent } from "./users/user-tasks/user-tasks.component";
-import { TasksComponent } from "./tasks/tasks.component";
-import { NewTaskComponent } from "./tasks/new-task/new-task.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 export const routes: Routes = [
   {
@@ -13,16 +13,11 @@ export const routes: Routes = [
   {
     path: "users/:userId", // <your-domain.com>/users/<uid>/
     component: UserTasksComponent,
-    children: [
-      {
-        path: "tasks", // <your-domain.com>/users/<uid>/<tasks>
-        component: TasksComponent,
-      },
-      {
-        path: "tasks/new",
-        component: NewTaskComponent,
-      },
-    ],
+    children: userRoutes,
+  },
+  {
+    path: "**",
+    component: NotFoundComponent,
   },
   //   {
   //     path: "tasks", // <your-domain.com/tasks>
