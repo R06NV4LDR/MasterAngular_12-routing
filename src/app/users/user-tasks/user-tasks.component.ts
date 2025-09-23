@@ -27,8 +27,8 @@ export const resolveUserName: ResolveFn<string> = (
   const usersService = inject(UsersService);
   const userName =
     usersService.users.find(
-      (u) => u.id === activatedRoute.paramMap.get("userId")
-    )?.name || "";
+      (u) => u.id === activatedRoute.paramMap.get('userId')
+    )?.name || '';
   return userName;
 };
 
@@ -36,5 +36,5 @@ export const resolveTitle: ResolveFn<string> = (
   activatedRoute,
   routerState
 ) => {
-  return resolveUserName(activatedRoute, routerState) + '\'s Tasks' // Name's Tasks
-};
+  return resolveUserName(activatedRoute, routerState) + '\'s Tasks'
+}
